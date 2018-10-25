@@ -1,0 +1,12 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}
+${licensePrefix}project: E-commerce eletrônico
+${licensePrefix}course: Programação para Web I
+${licensePrefix}university: Universidade Federal do Ceará - UFC
+${licensePrefix}credits (github): heldercostaa
+${licensePrefix}
+<#if licenseLast??>
+${licenseLast}
+</#if>

@@ -50,11 +50,12 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession(true); // cria e referencia a sessão do usuário
             session.setAttribute("tipoUsuario", tipoUsuario); // coloca o tipo de usuário no objeto request
             session.setAttribute("login", login); // coloca o login do usuário no objeto request
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/principal.jsp"); // despacha a requisição para a página main.jsp, encaminhando as instância de request e response 
+            request.setAttribute("mensagem", "Bem-Vindo!");
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); // despacha a requisição para a página index.jsp, encaminhando as instância de request e response 
             rd.forward(request, response);
         } else { // caso não esteja cadastrado
-            request.setAttribute("mensagem", "Login ou senha incorreta"); // coloca uma mensagem no objeto request
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); // despacha a requisição para a página index.jsp, encaminhando as instância de request e response
+            request.setAttribute("mensagem", "Login ou senha inválida."); // coloca uma mensagem no objeto request
+            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/sessao/logar.jsp"); // despacha a requisição para a página logar.jsp, encaminhando as instância de request e response
             rd.forward(request, response);
         }
     }

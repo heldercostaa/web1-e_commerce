@@ -108,6 +108,10 @@
         <servlet-name>NovoUsuarioServlet</servlet-name>
         <servlet-class>controle.usuario.NovoUsuarioServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AcessarContaServlet</servlet-name>
+        <servlet-class>controle.sessao.AcessarContaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -215,6 +219,10 @@
     <servlet-mapping>
         <servlet-name>ObterFuncionarioServlet</servlet-name>
         <url-pattern>/ObterFuncionarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AcessarContaServlet</servlet-name>
+        <url-pattern>/AcessarContaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

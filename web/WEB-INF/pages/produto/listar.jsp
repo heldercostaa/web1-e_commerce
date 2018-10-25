@@ -35,9 +35,9 @@
             if (tipoUsuario == 2) {
         %>
         <td><a href="ObterProdutoServlet?id=<%= item.getId()%>">Alterar</a>&nbsp;<a href="ExcluirProdutoServlet?id=<%= item.getId()%>">Excluir</a></td>
-        <%
-            }
-        %>
+    <%
+        }
+    %>
     </tr>
     <% } %>
 </table>

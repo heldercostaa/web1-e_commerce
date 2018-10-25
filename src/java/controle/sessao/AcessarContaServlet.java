@@ -6,7 +6,7 @@
  * credits (github): heldercostaa
  * 
  */
-package controle.produto;
+package controle.sessao;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author helder
+ * @author heldercosta
  */
-public class NovoProdutoServlet extends HttpServlet {
+public class AcessarContaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +32,7 @@ public class NovoProdutoServlet extends HttpServlet {
      */
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/produto/novo.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/sessao/logar.jsp");
         rd.forward(request, response);
     }
 }

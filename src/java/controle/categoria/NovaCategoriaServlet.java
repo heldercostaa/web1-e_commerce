@@ -33,7 +33,7 @@ public class NovaCategoriaServlet extends HttpServlet {
      */
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/categoria/incluir.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/categoria/nova.jsp");
         rd.forward(request, response);
     }
 }

@@ -6,12 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    int tipoUsuario = (Integer) session.getAttribute("tipoUsuario");
-    String login = (String) session.getAttribute("login");
-    if (login == null) {
-        request.setAttribute("mensagem", "Você não possui um login válido");
-        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-        rd.forward(request, response);
+    int tipoUsuario;
+    if(null != session.getAttribute("tipoUsuario")) {
+        tipoUsuario = (Integer) session.getAttribute("tipoUsuario");;
+    } else {
+        tipoUsuario = 0;
     }
 %>
 <!DOCTYPE html>
@@ -31,7 +30,17 @@
             <center>
                 <div id="menu-conteudo" class="div-table">
                     <div class="div-table-row">
+                        <%
+                            if (tipoUsuario == 0) {
+                        %>
+                        <div class="div-table-col"><a href="AcessarContaServlet">Acessar conta</a></div>
+                        <%
+                            } else {
+                        %>
                         <div class="div-table-col"><a href="VerDadosServlet">Meus Dados</a></div>
+                        <%
+                            }
+                        %>
                         <div class="div-table-col"><a href="ListarCategoriaServlet">Categorias</a></div>
                         <div class="div-table-col"><a href="ListarProdutoServlet">Produtos</a></div>
                         <%
@@ -42,7 +51,13 @@
                         <%
                             }
                         %>
+                        <%
+                            if (tipoUsuario != 0) {
+                        %>
                         <div class="div-table-col"><a href="LogoutServlet">Sair</a></div>
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
             </center>
@@ -54,7 +69,7 @@
         %>
 
         <div id="mensagem"><b><%= mensagem%></b></div>
-                <%
-                    }
-                %>
+            <%
+                }
+            %>
         <div id="conteudo">

@@ -4,12 +4,13 @@
     Author     : helder
 --%>
 
+<%@page import="config.Mensagem"%>
 <%@page import="modelo.produto.Produto"%>
 <%@include file="../cabecalho.jsp" %>
 <%
     if (tipoUsuario != 2) {
-        request.setAttribute("mensagem", "Você não possui permissão para acessar essa área");
-        RequestDispatcher rd = request.getRequestDispatcher("../principal.jsp");
+        request.setAttribute("mensagem", Mensagem.MSG_SEM_PERMISSAO);
+        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
         rd.forward(request, response);
     }
 %>

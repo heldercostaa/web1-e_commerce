@@ -20,8 +20,5 @@ public final class Configuracao {
     public static final String JDBC_URL = "jdbc:postgresql://localhost:5432/pweb1";
     public static final String JDBC_USUARIO = "postgres";
     public static final String JDBC_SENHA = "postgres";
-
-    private Configuracao() {
-        
-    }
+    
 }
