@@ -13,8 +13,8 @@
         <servlet-class>controle.usuario.IncluirUsuarioServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>VerDadosServlet</servlet-name>
-        <servlet-class>controle.sessao.VerDadosServlet</servlet-class>
+        <servlet-name>MeusDadosServlet</servlet-name>
+        <servlet-class>controle.sessao.MeusDadosServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ObterUsuarioServlet</servlet-name>
@@ -109,8 +109,16 @@
         <servlet-class>controle.usuario.NovoUsuarioServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AcessarContaServlet</servlet-name>
-        <servlet-class>controle.sessao.AcessarContaServlet</servlet-class>
+        <servlet-name>MinhaContaServlet</servlet-name>
+        <servlet-class>controle.sessao.MinhaContaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarServlet</servlet-name>
+        <servlet-class>controle.sessao.CadastrarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastreseServlet</servlet-name>
+        <servlet-class>controle.sessao.CadastreseServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -125,8 +133,8 @@
         <url-pattern>/IncluirUsuarioServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>VerDadosServlet</servlet-name>
-        <url-pattern>/VerDadosServlet</url-pattern>
+        <servlet-name>MeusDadosServlet</servlet-name>
+        <url-pattern>/MeusDadosServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ObterUsuarioServlet</servlet-name>
@@ -221,8 +229,16 @@
         <url-pattern>/ObterFuncionarioServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AcessarContaServlet</servlet-name>
-        <url-pattern>/AcessarContaServlet</url-pattern>
+        <servlet-name>MinhaContaServlet</servlet-name>
+        <url-pattern>/MinhaContaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarServlet</servlet-name>
+        <url-pattern>/CadastrarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastreseServlet</servlet-name>
+        <url-pattern>/CadastreseServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -7,7 +7,6 @@
 <%@page import="java.util.List"%>
 <%@page import="config.Mensagem"%>
 <%@page import="modelo.funcionario.Funcionario"%>
-<%@page import="config.Mensagem"%>
 <%@include file="../cabecalho.jsp" %>
 <%
     if (tipoUsuario != 2) {

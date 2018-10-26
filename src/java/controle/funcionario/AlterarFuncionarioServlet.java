@@ -47,8 +47,14 @@ public class AlterarFuncionarioServlet extends HttpServlet {
         } else {
             request.setAttribute("mensagem", "Não foi possível alterar este usuario");
         }
-        RequestDispatcher rd = request.getRequestDispatcher("ListarFuncionarioServlet");
-        rd.forward(request, response);
+        
+        if (null != request.getParameter("verDados")) {
+            RequestDispatcher rd = request.getRequestDispatcher("MeusDadosServlet");
+            rd.forward(request, response);
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("ListarFuncionarioServlet");
+            rd.forward(request, response);
+        }
     }
 
 }

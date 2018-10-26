@@ -23,7 +23,7 @@ import modelo.usuario.UsuarioNegocio;
  *
  * @author Leonardo Oliveira Moreira
  */
-public class VerDadosServlet extends HttpServlet {
+public class MeusDadosServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -53,7 +53,7 @@ public class VerDadosServlet extends HttpServlet {
         
         if (dados != null) { // caso exista o usuário com o login armazenado na sessão
             request.setAttribute("dados", dados);
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/verDados.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/sessao/verDados.jsp");
             rd.forward(request, response);
         } else { // caso o login não exista na sessão ou não é um login válido no sistema
             request.setAttribute("mensagem", "Você não possui um login válido");

@@ -43,8 +43,16 @@ public class ExcluirUsuarioServlet extends HttpServlet {
         } else {
             request.setAttribute("mensagem", "Não foi possível excluir este usuário");
         }
-        RequestDispatcher rd = request.getRequestDispatcher("ListarUsuarioServlet");
-        rd.forward(request, response);
+        
+        String url = request.getHeader("referer");
+        
+        if(url.matches("(.*)MeusDadosServlet")) {
+            RequestDispatcher rd = request.getRequestDispatcher("LogoutServlet");
+            rd.forward(request, response);
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+        }
     }
 
 }

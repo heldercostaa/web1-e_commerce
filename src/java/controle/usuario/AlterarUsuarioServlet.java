@@ -48,8 +48,14 @@ public class AlterarUsuarioServlet extends HttpServlet {
         } else {
             request.setAttribute("mensagem", "Não foi possível alterar este usuário");
         }
-        RequestDispatcher rd = request.getRequestDispatcher("ListarUsuarioServlet");
-        rd.forward(request, response);
+        
+        if (null != request.getParameter("verDados")) {
+            RequestDispatcher rd = request.getRequestDispatcher("MeusDadosServlet");
+            rd.forward(request, response);
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("ListarUsuarioServlet");
+            rd.forward(request, response);
+        }
     }
 
 }

@@ -6,7 +6,7 @@
  * credits (github): heldercostaa
  * 
  */
-package controle.funcionario;
+package controle.sessao;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -14,13 +14,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.funcionario.FuncionarioNegocio;
+import modelo.usuario.UsuarioNegocio;
 
 /**
  *
- * @author helder
+ * @author heldercosta
  */
-public class ExcluirFuncionarioServlet extends HttpServlet {
+public class CadastrarServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,24 +33,22 @@ public class ExcluirFuncionarioServlet extends HttpServlet {
      */
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // entrada
         String login = request.getParameter("login");
-        FuncionarioNegocio funcionarioNegocio = new FuncionarioNegocio();
-        boolean sucessoExcluir = funcionarioNegocio.excluir(login);
-        if (sucessoExcluir) {
-            request.setAttribute("mensagem", "Funcionario excluído com sucesso");
-        } else {
-            request.setAttribute("mensagem", "Não foi possível excluir este funcionario");
-        }
-        
-        String url = request.getHeader("referer");
-        
-        if(url.matches("(.*)MeusDadosServlet")) {
-            RequestDispatcher rd = request.getRequestDispatcher("LogoutServlet");
+        String nome = request.getParameter("nome");
+        String senha = request.getParameter("senha");
+        // processamento
+        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+        boolean sucessoInserir = usuarioNegocio.inserir(nome, login, senha);
+        // saída
+        if (sucessoInserir) {
+            request.setAttribute("mensagem", "Cadastro realizado com sucesso.");
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         } else {
+            request.setAttribute("mensagem", "Não foi possível cadastrar o usuário.");
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
     }
-    
 }

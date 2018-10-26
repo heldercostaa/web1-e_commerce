@@ -58,4 +58,6 @@ public class Funcionario implements PerfilInterface {
         this.salario = salario;
     }
     
+    
+    
 }

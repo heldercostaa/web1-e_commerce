@@ -7,10 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     int tipoUsuario;
+    String login;
     if(null != session.getAttribute("tipoUsuario")) {
-        tipoUsuario = (Integer) session.getAttribute("tipoUsuario");;
+        tipoUsuario = (Integer) session.getAttribute("tipoUsuario");
+        login = (String) session.getAttribute("login");
     } else {
         tipoUsuario = 0;
+        login = "";
     }
 %>
 <!DOCTYPE html>
@@ -33,11 +36,11 @@
                         <%
                             if (tipoUsuario == 0) {
                         %>
-                        <div class="div-table-col"><a href="AcessarContaServlet">Acessar conta</a></div>
+                        <div class="div-table-col"><a href="MinhaContaServlet">Minha conta</a></div>
                         <%
                             } else {
                         %>
-                        <div class="div-table-col"><a href="VerDadosServlet">Meus Dados</a></div>
+                        <div class="div-table-col"><a href="MeusDadosServlet">Meus Dados</a></div>
                         <%
                             }
                         %>
