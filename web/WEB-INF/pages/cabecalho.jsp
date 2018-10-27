@@ -46,6 +46,7 @@
                         %>
                         <div class="div-table-col"><a href="ListarCategoriaServlet">Categorias</a></div>
                         <div class="div-table-col"><a href="ListarProdutoServlet">Produtos</a></div>
+                        <div class="div-table-col"><a href="ListarCarrinhoServlet">Carrinho</a></div>
                         <%
                             if (tipoUsuario == 2) { 
                         %>

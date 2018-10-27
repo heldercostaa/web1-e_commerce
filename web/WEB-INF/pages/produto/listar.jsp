@@ -22,7 +22,8 @@
         <th>Id</th>
         <th>Descrição</th>
         <th>Preço</th>
-        <th>Categoria</th>        
+        <th>Categoria</th>  
+        <th>Carrinho</th>  
         <th class="controles"></th>
     </tr>
     <% for (Produto item : resultado) {%>
@@ -31,6 +32,13 @@
         <td><%= item.getDescricao()%></td>
         <td><%= item.getPreco()%></td>
         <td><%= item.getCategoria()%></td>
+        <td>
+            <form action="AdicionarCarrinhoServlet">
+                <input type="hidden" name="produtoId" value="<%= item.getId()%>" />
+                <input type="number" name="quantidade" step="1" value="1" />
+                <input type="submit" value="Adicionar" />
+            </form>
+        </td>
         <%
             if (tipoUsuario == 2) {
         %>

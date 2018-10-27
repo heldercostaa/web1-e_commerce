@@ -120,6 +120,18 @@
         <servlet-name>CadastreseServlet</servlet-name>
         <servlet-class>controle.sessao.CadastreseServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarCarrinhoServlet</servlet-name>
+        <servlet-class>controle.carrinho.ListarCarrinhoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdicionarCarrinhoServlet</servlet-name>
+        <servlet-class>controle.carrinho.AdicionarCarrinhoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoverCarrinhoServlet</servlet-name>
+        <servlet-class>controle.carrinho.RemoverCarrinhoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -239,6 +251,18 @@
     <servlet-mapping>
         <servlet-name>CadastreseServlet</servlet-name>
         <url-pattern>/CadastreseServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarCarrinhoServlet</servlet-name>
+        <url-pattern>/ListarCarrinhoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionarCarrinhoServlet</servlet-name>
+        <url-pattern>/AdicionarCarrinhoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoverCarrinhoServlet</servlet-name>
+        <url-pattern>/RemoverCarrinhoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

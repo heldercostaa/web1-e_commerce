@@ -7,7 +7,7 @@
  * 
  */
 
-package modelo.sessao;
+package modelo.perfil;
 
 import modelo.funcionario.Funcionario;
 import modelo.funcionario.FuncionarioDAO;
@@ -18,7 +18,7 @@ import modelo.usuario.UsuarioDAO;
  *
  * @author heldercosta
  */
-public class SessaoNegocio {
+public class PerfilNegocio {
 
     /**
      * Método que identifica o tipo de usuario

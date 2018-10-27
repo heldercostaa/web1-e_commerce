@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelo.sessao.SessaoNegocio;
+import modelo.perfil.PerfilNegocio;
 
 /**
  *
@@ -43,8 +43,8 @@ public class LoginServlet extends HttpServlet {
         String senha = request.getParameter("senha");
         
         // processamento        
-        SessaoNegocio sessaoNegocio = new SessaoNegocio();
-        int tipoUsuario = sessaoNegocio.efetuarLogin(login, senha);
+        PerfilNegocio perfilNegocio = new PerfilNegocio();
+        int tipoUsuario = perfilNegocio.efetuarLogin(login, senha);
         
         if (tipoUsuario == 1 || tipoUsuario == 2) { // caso seja usuário ou funcionario
             HttpSession session = request.getSession(true); // cria e referencia a sessão do usuário

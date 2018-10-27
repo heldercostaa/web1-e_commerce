@@ -37,10 +37,14 @@ public class IncluirFuncionarioServlet extends HttpServlet {
         String login = request.getParameter("login");
         String nome = request.getParameter("nome");
         String senha = request.getParameter("senha");
-        double salario = Double.parseDouble(request.getParameter("salario"));
-        // processamento
-        FuncionarioNegocio funcionarioNegocio = new FuncionarioNegocio();
-        boolean sucessoInserir = funcionarioNegocio.inserir(login, nome, senha, salario);
+        boolean sucessoInserir = false;
+        try {
+            double salario = Double.parseDouble(request.getParameter("salario"));
+            // processamento
+            FuncionarioNegocio funcionarioNegocio = new FuncionarioNegocio();
+            sucessoInserir = funcionarioNegocio.inserir(login, nome, senha, salario);
+        } catch (Exception ex) {
+        }
         // saída
         if (sucessoInserir) {
             request.setAttribute("mensagem", "Funcionario inserido com sucesso");
