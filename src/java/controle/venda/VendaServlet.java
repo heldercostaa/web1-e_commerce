@@ -20,6 +20,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.carrinho.CarrinhoItem;
 import modelo.carrinho.CarrinhoNegocio;
 import modelo.venda.VendaNegocio;
@@ -41,6 +42,7 @@ public class VendaServlet extends HttpServlet {
      */
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String login = request.getParameter("login"); //login do usuário
         
         if(login.equals("")){

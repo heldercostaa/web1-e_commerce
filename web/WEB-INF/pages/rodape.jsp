@@ -5,6 +5,9 @@
 --%>
             </div>    
         </center>
-        <div id="rodape">SMD e-commerce &copy; 2018</div>
+        <div id="rodape">
+            github: heldercostaa <br/>
+            SMD e-commerce &copy; 2018 
+        </div>
     </body>
 </html>
