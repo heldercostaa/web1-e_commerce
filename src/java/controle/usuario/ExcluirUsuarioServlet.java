@@ -38,17 +38,19 @@ public class ExcluirUsuarioServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String login = request.getParameter("login");
+        
         // verificação para ver se o usuário possui permissão
         HttpSession session = request.getSession();
         Integer tipoUsuario = (Integer) session.getAttribute("tipoUsuario");
-        if (tipoUsuario == null || tipoUsuario != 2) {  
+        String loginSessao = (String) session.getAttribute("login");
+        if (tipoUsuario == null || loginSessao == null || (tipoUsuario != 2 && !loginSessao.equals(login))) {  
             request.setAttribute("mensagem", Mensagem.MSG_SEM_PERMISSAO);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
             return;
         }
         
-        String login = request.getParameter("login");
         UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
         boolean sucessoExcluir = usuarioNegocio.excluir(login);
         if (sucessoExcluir) {
