@@ -1,5 +1,6 @@
 # SMD E-commerce
 #### Programação para Web I, Universidade Federal do Ceará - UFC
+#### Docente: [Leonardo Oliveira Moreira](http://lattes.cnpq.br/2880668102587861)
 
 ### IDE, Servidor e Banco de Dados
 Foi utilizado a IDE **NetBeans** para o desenvolvimento do projeto, juntamente com um servidor (instalado na opção customizada da instalação do NetBeans) **Apache Tomcat** em sua versão 8.0.27.
