@@ -2,8 +2,8 @@
 #### Programação para Web I, Universidade Federal do Ceará - UFC
 
 ### IDE, Servidor e Banco de Dados
-Foi utilizado a IDE NetBeans para o desenvolvimento do projeto, juntamente com um servidor (instalado na opção customizada da instalação do NetBeans) Apache Tomcat em sua versão 8.0.27.
-Além disso, o banco de dados utilizado foi o PostgreSQL 11.0 manipulado através da interface do pgAdmin 4 e usando a biblioteca PostgreSQL JDBC Driver na versão 9-4.1209 (deverá ser importado na pasta Libraries, no caso do NetBeans).
+Foi utilizado a IDE **NetBeans** para o desenvolvimento do projeto, juntamente com um servidor (instalado na opção customizada da instalação do NetBeans) **Apache Tomcat** em sua versão 8.0.27.
+Além disso, o banco de dados utilizado foi o **PostgreSQL** 11.0 manipulado através da interface do **pgAdmin 4** e usando a biblioteca **PostgreSQL JDBC Driver** na versão 9-4.1209 (deverá ser importado na pasta Libraries, no caso do NetBeans).
 
 Para rodar a aplicação, é preciso que o banco de dados esteja configurado corretamente. Por isso, é necessário rodar o script de banco de dados encontrado [nesse arquivo](https://github.com/heldercostaa/web1-e_commerce/blob/master/src/java/_database/script_ddl.sql).
 E, para setar as configurações de senha e acesso, editar [esse arquivo](https://github.com/heldercostaa/web1-e_commerce/blob/master/src/java/config/Configuracao.java) com as credenciais corretas.
