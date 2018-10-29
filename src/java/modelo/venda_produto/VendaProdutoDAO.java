@@ -33,13 +33,15 @@ public class VendaProdutoDAO {
      *
      * @return
      */
-    public List<VendaProduto> obterTodos() {
+    public List<VendaProduto> obterTodosPorVenda(int id) {
         List<VendaProduto> resultado = new ArrayList<VendaProduto>();
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT venda_id, produto_id, quantidade FROM venda_produto");
+            PreparedStatement preparedStatement = connection.prepareCall("SELECT venda_id, produto_id, quantidade FROM venda_produto WHERE venda_id = ?");
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 VendaProduto vendaProduto = new VendaProduto();
                 vendaProduto.setVenda(resultSet.getInt("venda_id"));
@@ -60,16 +62,18 @@ public class VendaProdutoDAO {
      * Método utilizado para obter um relacionamento de venda e produto pelo id 
      * da venda
      *
-     * @param venda
+     * @param venda_id
+     * @param produto_id
      * @return
      */
-    public VendaProduto obterVenda(int venda) {
+    public VendaProduto obterVendaProduto(int venda_id, int produto_id) {
         VendaProduto vendaProduto = null;
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
-            PreparedStatement preparedStatement = connection.prepareCall("SELECT venda_id, produto_id, quantidade FROM venda_produto WHERE id = ?");
-            preparedStatement.setInt(1, venda);
+            PreparedStatement preparedStatement = connection.prepareCall("SELECT venda_id, produto_id, quantidade FROM venda_produto WHERE venda_id = ? AND produto_id = ?");
+            preparedStatement.setInt(1, venda_id);
+            preparedStatement.setInt(1, produto_id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 vendaProduto = new VendaProduto();
@@ -89,19 +93,19 @@ public class VendaProdutoDAO {
     /**
      * Método utilizado para registrar um novo relacionamento de venda e produto
      *
-     * @param venda
-     * @param produto
+     * @param venda_id
+     * @param produto_id
      * @param quantidade
      * @return
      */
-    public boolean inserir(int venda, int produto, int quantidade) {
+    public boolean inserir(int venda_id, int produto_id, int quantidade) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO venda_produto (venda_id, produto_id, quantidade) VALUES (?, ?, ?)");
-            preparedStatement.setInt(1, venda);
-            preparedStatement.setInt(2, produto);
+            preparedStatement.setInt(1, venda_id);
+            preparedStatement.setInt(2, produto_id);
             preparedStatement.setInt(3, quantidade);
             resultado = (preparedStatement.executeUpdate() > 0);
             preparedStatement.close();
@@ -116,20 +120,20 @@ public class VendaProdutoDAO {
      * Método utilizado para alterar a quantidade de um relacionamento de 
      * venda e produto já existente
      *
-     * @param venda
-     * @param produto
+     * @param venda_id
+     * @param produto_id
      * @param quantidade
      * @return
      */
-    public boolean alterar(int venda, int produto, int quantidade) {
+    public boolean alterar(int venda_id, int produto_id, int quantidade) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE venda_produto SET quantidade = ? WHERE venda_id = ? AND produto_id = ?");
             preparedStatement.setInt(1, quantidade);
-            preparedStatement.setInt(2, venda);
-            preparedStatement.setInt(3, produto);
+            preparedStatement.setInt(2, venda_id);
+            preparedStatement.setInt(3, produto_id);
             resultado = (preparedStatement.executeUpdate() > 0);
             preparedStatement.close();
             connection.close();
@@ -142,18 +146,18 @@ public class VendaProdutoDAO {
     /**
      * Método para excluir um relacionamento de venda e produto já existente
      *
-     * @param venda
-     * @param produto
+     * @param venda_id
+     * @param produto_id
      * @return
      */
-    public boolean excluir(int venda, int produto) {
+    public boolean excluir(int venda_id, int produto_id) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM venda_produto WHERE venda_id = ? AND produto_id = ?");
-            preparedStatement.setInt(1, venda);
-            preparedStatement.setInt(2, produto);
+            preparedStatement.setInt(1, venda_id);
+            preparedStatement.setInt(2, produto_id);
             resultado = (preparedStatement.executeUpdate() > 0);
             preparedStatement.close();
             connection.close();

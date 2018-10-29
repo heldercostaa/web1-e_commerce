@@ -25,7 +25,7 @@
     <div class="campo"><input type="text" name="nome" value="<%= usuario.getNome()%>" /></div>
     <div class="rotulo">Senha:</div>
     <div class="campo"><input type="password" name="senha" value="<%= usuario.getSenha()%>" /></div>
-    <% if(request.getHeader("Referer").matches("(.*)MeusDadosServlet")) { %>
+    <% if(request.getHeader("Referer").matches("(.*)MeusDadosServlet") || usuario.getLogin().equals(login)) { %>  
     <input type="hidden" name="verDados" value="TRUE" />
     <% 
         }

@@ -33,7 +33,9 @@
     <% } %>
 </table>
 <div>Subtotal (<%= quantidade%> itens) = <%= total%></div>
-<% } else {
+<input type="button" onclick="location.href='VendaServlet?login=<%= login%>'" value="Finalizar compra">
+<% 
+    } else {
     request.setAttribute("mensagem", Mensagem.MSG_CARRINHO_VAZIO);
     RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
     rd.forward(request, response);

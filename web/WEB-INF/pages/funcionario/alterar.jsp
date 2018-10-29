@@ -24,7 +24,7 @@
     <div class="campo"><input type="text" name="senha" value="<%= funcionario.getSenha()%>" /></div>
     <div class="rotulo">Salário:</div>
     <div class="campo"><input type="number" step="0.01" name="salario" value="<%= funcionario.getSalario()%>" /></div>
-    <% if(request.getHeader("Referer").matches("(.*)MeusDadosServlet")) { %>
+    <% if(request.getHeader("Referer").matches("(.*)MeusDadosServlet") || funcionario.getLogin().equals(login)) { %>
     <input type="hidden" name="verDados" value="TRUE" />
     <% 
         }

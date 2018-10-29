@@ -24,6 +24,8 @@
     <%
         }
     %>
+    <br/>
+    <input type="button" onclick="location.href='HistoricoComprasServlet?login=<jsp:getProperty name="dados" property="login" />'" value="Histórico de Compras">
 </div>
 
 <%@include file="../rodape.jsp" %>

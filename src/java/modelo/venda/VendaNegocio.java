@@ -9,6 +9,8 @@
 package modelo.venda;
 
 import java.util.List;
+import modelo.carrinho.CarrinhoItem;
+import modelo.venda_produto.VendaProdutoNegocio;
 
 /**
  *
@@ -18,9 +20,24 @@ import java.util.List;
  */
 public class VendaNegocio {
     
-    public boolean inserir(int id, String data, String login) {
+    public boolean inserir(String data, String login, List<CarrinhoItem> resultado) {
+        
+        int id = proximoId(); // obtem id no banco da próxima venda
+        
         VendaDAO dao = new VendaDAO();
-        return dao.inserir(id, data, login);
+        if(id == -1 || !dao.inserir(id, data, login)) { return false; } // caso não consiga cadastrar uma nova venda ele retorna false sem precisar excluir nada
+        boolean sucessoVendaProduto;
+        VendaProdutoNegocio vendaProdutoNegocio = new VendaProdutoNegocio();
+        for(CarrinhoItem produto : resultado) {
+            sucessoVendaProduto = vendaProdutoNegocio.inserir(id, produto.getProduto().getId(), produto.getQuantidade());
+            if(!sucessoVendaProduto) { // caso dê algum erro, são excluidas todas as vendas
+                for(CarrinhoItem p : resultado) {
+                    vendaProdutoNegocio.excluir(id, p.getProduto().getId());
+                }
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean alterar(int id, String data, String login) {
@@ -33,14 +50,19 @@ public class VendaNegocio {
         return dao.excluir(id);
     }
     
-    public Venda obterUsuario(int id) {
+    public Venda obterVenda(int id) {
         VendaDAO dao = new VendaDAO();
         return dao.obterVenda(id);
     }
 
-    public List<Venda> obterTodos() {
+    public List<Venda> obterTodosPorLogin(String login) {
         VendaDAO dao = new VendaDAO();
-        return dao.obterTodos();
+        return dao.obterTodosPorLogin(login);
+    }
+    
+    public int proximoId() {
+        VendaDAO dao = new VendaDAO();
+        return dao.proximoId();
     }
     
 }

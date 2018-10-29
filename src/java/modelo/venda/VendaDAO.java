@@ -30,20 +30,23 @@ public class VendaDAO {
     /**
      * Método utilizado para recuperar todas as vendas registradas no banco
      *
+     * @param login
      * @return
      */
-    public List<Venda> obterTodos() {
+    public List<Venda> obterTodosPorLogin(String login) {
         List<Venda> resultado = new ArrayList<Venda>();
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT id, data, usuario_login FROM venda");
+            PreparedStatement preparedStatement = connection.prepareCall("SELECT id, data, login FROM venda WHERE login = ?");
+            preparedStatement.setString(1, login);
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Venda venda = new Venda();
                 venda.setId(resultSet.getInt("id"));
                 venda.setData(resultSet.getString("data"));
-                venda.setLogin(resultSet.getString("usuario_login"));
+                venda.setLogin(resultSet.getString("login"));
                 resultado.add(venda);
             }
             resultSet.close();
@@ -66,14 +69,14 @@ public class VendaDAO {
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
-            PreparedStatement preparedStatement = connection.prepareCall("SELECT id, data, usuario_login FROM venda WHERE id = ?");
+            PreparedStatement preparedStatement = connection.prepareCall("SELECT id, data, login FROM venda WHERE id = ?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 venda = new Venda();
                 venda.setId(resultSet.getInt("id"));
                 venda.setData(resultSet.getString("data"));
-                venda.setLogin(resultSet.getString("usuario_login"));
+                venda.setLogin(resultSet.getString("login"));
             }
             resultSet.close();
             preparedStatement.close();
@@ -110,6 +113,28 @@ public class VendaDAO {
         return resultado;
     }
 
+    /**
+     * Método utilizado para pegar o próximo id válido para inserir no banco
+     *
+     * @return
+     */
+    public int proximoId() {
+        int id = 1;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT id FROM venda ORDER BY id DESC LIMIT 1"); // pega apenas a última linha
+            while (resultSet.next()) {
+                id = resultSet.getInt("id") + 1; // soma 1 no último id de venda registrado no banco
+            }
+            connection.close();
+        } catch (Exception ex) {
+            return -1;
+        }
+        return id;
+    }
+    
     /**
      * Método utilizado para alterar uma venda já existente
      * Idealmente esse método não deve ser usado, já que uma venda não deve ser

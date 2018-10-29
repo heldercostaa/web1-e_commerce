@@ -69,8 +69,6 @@ public class FuncionarioDAO {
             preparedStatement.close();
             connection.close();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(ex);
             return null;
         }
         return funcionario;

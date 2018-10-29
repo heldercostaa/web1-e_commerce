@@ -181,6 +181,45 @@ ALTER TABLE ONLY public.produto
     ADD CONSTRAINT produto_categoria_id_fk FOREIGN KEY (categoria_id) REFERENCES public.categoria(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
+
+CREATE TABLE public.venda
+(
+    id integer NOT NULL,
+    data character varying COLLATE pg_catalog."default" NOT NULL,
+    login character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT venda_pk PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.venda
+    OWNER to postgres;
+
+
+CREATE TABLE public.venda_produto
+(
+    venda_id integer NOT NULL,
+    produto_id integer NOT NULL,
+    quantidade integer NOT NULL,
+    CONSTRAINT venda_produto_produto_id_fk FOREIGN KEY (produto_id)
+        REFERENCES public.produto (id) MATCH SIMPLE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT,
+    CONSTRAINT venda_produto_venda_id_fk FOREIGN KEY (venda_id)
+        REFERENCES public.venda (id) MATCH SIMPLE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.venda_produto
+    OWNER to postgres;
+
 -- Completed on 2018-09-18 19:45:14
 
 --
