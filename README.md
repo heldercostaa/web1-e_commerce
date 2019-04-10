@@ -1,8 +1,8 @@
 # SMD E-commerce
 > Helder Costa (github/linkedin: heldercostaa)  
-> Programação para Web I  
-> Universidade Federal do Ceará - UFC  
-> Docente: [Leonardo Oliveira](http://lattes.cnpq.br/2880668102587861)  
+> Programming for Web I   
+> Federal University of Ceará  
+> Professor: [Leonardo Oliveira](http://lattes.cnpq.br/2880668102587861)  
 
 ### IDE, Server, and Data Base
 It was used the IDE **NetBeans** to develop this project, along with a server (installed with the custom settings in NetBeans installation) **Apache Tomcat** in version 8.0.27.
