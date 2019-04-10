@@ -1,6 +1,6 @@
 # SMD E-commerce
 > Helder Costa (github/linkedin: heldercostaa)  
-> Programming for Web I   
+> Programming for Web I  
 > Federal University of Ceará  
 > Professor: [Leonardo Oliveira](http://lattes.cnpq.br/2880668102587861)  
 
